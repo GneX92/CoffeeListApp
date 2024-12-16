@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div id="main_div">
+
+    <div class="row justify-content-center border border-2 border-black" style="padding-top: 10px; padding-bottom: 10px;">
+        <div class="col-sm-12"><b>Kaffeeliste</b></div>
+    </div>
+
+    <form asp-action="AddEntry" asp-controller="Home" method="post" data-ajax="true" data-ajax-update="#main_div" id="listfooter" class="row align-items-center justify-content-start border border-2 border-black" style="padding-top: 10px; padding-bottom: 10px;">
+            <div class="col-sm-5">
+                <input class="form-control" id="personaddname" name="Name" type="text" placeholder="Name" />              
+            </div>
+            <div class="col-sm-1">
+                <input class="form-text" type="image" name="submit" src="/person-plus-fill.svg" alt="Submit" border="0" width="32" height="32" style="align-self:center;" />
+            </div>
+            <div class="col-sm-6"></div>
+        </form>
+
+</div>
+

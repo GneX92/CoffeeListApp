@@ -1,0 +1,30 @@
+﻿@model List<Entry>
+
+    <div class="row justify-content-center border border-2 border-black" style="padding-top: 10px; padding-bottom: 10px;">
+        <div class="col-sm-12"><b>Kaffeeliste</b></div>
+    </div>
+
+    @foreach(var item in Model)
+    {
+        <form asp-action="AddEntry" asp-controller="Home" method="post" data-ajax="true" data-ajax-update="#main_div" 
+        class="row align-items-center justify-content-center border-start border-end border-2 border-black" 
+        style="padding-top: 10px; padding-bottom: 10px;">
+
+            <div class="col-sm-5"><label id="@item.Name">@item.Name</label></div>
+            <div class="col-sm-5"><input type="number" value="@item.Count" onchange="callActionUpdateCount('@item.Name', this.value)" /></div>
+            <div class="col-sm-1"><img src="/trash3-fill.svg" alt="Bootstrap" width="32" height="32" onclick="showConfirmDialog('@item.Name')"></div>
+            <div class="col-sm-1"><img src="/gear-fill.svg" alt="Bootstrap" width="32" height="32" onclick="showNamePrompt('@item.Name')"></div>
+
+        </form>
+    }
+
+    <form asp-action="AddEntry" asp-controller="Home" method="post" data-ajax="true" data-ajax-update="#main_div" id="listfooter" class="row align-items-center justify-content-start border border-2 border-black" style="padding-top: 10px; padding-bottom: 10px;">
+        <div class="col-sm-5">
+            <input class="form-control" id="personaddname" name="Name" type="text" placeholder="Name" />
+        </div>
+        <div class="col-sm-1">
+            <input class="form-text" type="image" name="submit" src="/person-plus-fill.svg" alt="Submit" border="0" width="32" height="32" style="align-self:center;" />
+        </div>
+        <div class="col-sm-6"></div>
+    </form>
+
